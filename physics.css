@@ -1,0 +1,213 @@
+body{
+    background-color: skyblue;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media screen and (max-width:600px) {
+    body{
+        width: 95vw;
+    }
+}
+@media screen and (min-width:600px) {
+    body{
+        width: 50vh;
+    }
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.tabkirikae{
+    display: flex;
+    margin: 0 -2px;
+    border-bottom: 3px solid #5bbee5;
+}
+.tabincla{
+    display: none;
+}
+.tabkirikae > li{
+    margin: 0 2px;
+    width: 100%;
+    text-align: center;
+}
+.tablabcla{
+    display: block;
+    padding: 0.5em 1em;
+    color: #fff;
+    background: #5bbee5;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+#tabid1:checked ~ .tabkirikae #tab1,
+#tabid2:checked ~ .tabkirikae #tab2,
+#tabid3:checked ~ .tabkirikae #tab3{
+    background-color: #ccc;
+}
+#tabid1:checked ~ .tabu #tt1,
+#tabid2:checked ~ .tabu #tt2,
+#tabid3:checked ~ .tabu #tt3{
+  display: block;
+}
+.tab{
+    display: none;
+    padding: 1em;
+    border-bottom: 1px solid #5bbee5;
+    border-left: 1px solid #5bbee5;
+    border-right: 1px solid #5bbee5;
+}
+.tab1kihonryouiki{
+    width: 100%;
+}
+.datamozi{
+    margin: 1%;
+}
+.result{
+    display: none;
+}
+.result.ima{
+    display: block;
+    padding: 1em;
+    border: 1px solid #5bbee5;
+    height: 16vh;
+    background-color: #ecf3f9;
+    border-radius: 10px;
+}
+button{
+    padding: 0.5% 3%;
+    background-color: #337ab7;
+    color: #fdffff;
+    border-radius: 5px;
+    border-color: #256fb0;
+    text-align: center;
+}
+#tawaa{
+    height: 20px;
+    border-radius: 3px;
+    border: 2px solid#ddd;
+}
+#tawaa:focus{
+    border: 2px solid#ff9900;
+}
+.xdata{
+    padding: 0% 5%;
+    width: 40%;
+}
+.hitotume{
+    width: 100%;
+}
+.result{
+    padding: 5%;
+}
+.rensaku{
+    display: flex;
+    width: 100%;
+}
+.rensakuoya{
+    padding:5% 0%;
+}
+.buotton{
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+.mittume{
+    display: flex;
+    align-items: center;
+    width: 7.5%;
+}
+.iinput{
+    width: 95%;
+}
+.iinpute{
+    border-color: red;
+    width: 95%;
+}
+.keisannb{
+    margin: 5%;
+}
+.reresult{
+    margin-left: 5%;
+}
+.keisannb{
+    color: hsl(28, 45%, 35%);
+    background: #4db56a;
+    font-weight: 600;
+    font-size: 1em;
+    border: none;
+}
+.no10{
+    display: flex;
+    justify-content: center;
+}
+.no10in{
+    width: 20%;
+}
+.setu{
+    margin: 0%;
+    font-weight: normal;
+}
+.selecct{
+    width: 20%;
+}
+.renraku{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    align-items: center;
+}
+.renraku1{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    align-items: center;
+}
+.renraku2{
+    display: flex;
+    width: 100%;
+    height: 30%;
+    align-items: center;
+}
+.hyouka{
+    margin: 0%;
+    padding: auto;
+}
+.rebsult.nam{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+.rebsult{
+    display: none;
+}
+.rexysult.num{
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.rexysult{
+    display: none;
+}
+.syousai{
+    display: flex;
+    padding: 1em;
+    border: 1px solid #5bbee5;
+    height: 1vh;
+    background-color: #ecf3f9;
+    border-radius: 10px;
+    align-items: center;
+}
+.ototmo{
+    margin-bottom: 0;
+}
+.hyounai{
+    border: none;
+    background-color: #ecf3f9;
+    display: flex;
+    align-items: center;
+    color: black;
+    margin:auto 0 auto 0;
+}
+.ic{
+    width: 25%;
+}

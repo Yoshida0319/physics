@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物理実験</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="physics.css">
+</head>
+<body>
+    <h1 class="ototmo">物理実験のお供</h1>
+    <div class="kihonnhyouzi">
+        <input name="tabin" id="tabid1" class="tabincla" type="radio" checked>
+        <input name="tabin" id="tabid2" class="tabincla" type="radio">
+        <input name="tabin" id="tabid3" class="tabincla" type="radio">
+        <ul class="tabkirikae">
+            <li>
+                <label id="tab1" class="tablabcla" for="tabid1">データ解析</label>
+            </li>
+            <li>
+                <label id="tab2" class="tablabcla" for="tabid2">計算式</label>
+            </li>
+            <li>
+                <label id="tab3" class="tablabcla" for="tabid3">使い方</label>
+            </li>
+        </ul>
+        <div class="tabu">
+            <div class="tab" id="tt1">
+                <div class="tab1kihonryouiki" id="tab1kinhonryouiki">
+                    <h4 class="datamozi">データ数の入力</h4>
+                    <input type="number" id="tawaa" size="50" placeholder="半角＆自然数">
+                    <button id="botan">出力</button>
+                    <div class="rensakuoya">
+                        <h4 class="datamozi">X-Yデータの入力</h4>
+                        <div class="rensaku">
+                            <div class="xdata">
+                                <div class="no10">
+                                    <h5 class="setu">X(×10^</h5>
+                                    <input name="zyou" value="0" class="no10in" id="no10in1">
+                                    <h5 class="setu">)</h5>
+                                </div>
+                                <div class="hitotume" id="hitotume"></div>
+                            </div>
+                            <div class="mittume">
+                                <button class="buotton" id="buotton">↔</button>
+                            </div>
+                            <div class="xdata">
+                                <div class="no10">
+                                    <h5 class="setu">Y(×10^</h5>
+                                    <input name="zyou" value="0" class="no10in" id="no10in2">
+                                    <h5 class="setu">)</h5>
+                                </div>
+                                <div class="hitotume" id="hutatume"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="datamozi">回帰直線の式</h4>
+                    <div class="reresult" id="resultarea">
+                        <select name="ysiki" id="ysiki" class="ic">
+                            <option value="0">y</option>
+                            <option value="1">log10(y)</option>
+                            <option value="2">1/y</option>
+                        </select> = a
+                        <select name="xsiki" id="xsiki" class="selecct">
+                            <option value="0">x</option>
+                            <option value="1">x^2</option>
+                            <option value="2">1/x</option>
+                        </select> +
+                        <select name="bsiki" id="bsiki" class="selecct">
+                            <option value="0">b</option>
+                            <option value="1">0</option>
+                        </select>
+                    </div>
+                    <button class="keisannb" id="keisanb">計算</button>
+                    <div class="result ima" id="result_none"></div>
+                    <div class="result" id="result_onlyx">
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ \bar{x}\ =\ \)</p>
+                            <button class="hyounai" id="onlyx_xbar"></button>
+                            <p class="hyouka">\(\ \times 10\)</p>
+                            <p class="hyouka" id="x_times"></p>
+                        </div>
+                        <div class="renraku">
+                            <p class="hyouka">\(\ \delta x\ =\ \)</p>
+                            <button class="hyounai" id="onlyx_delx"></button>
+                            <p class="hyouka">\(\ \times 10\)</p>
+                            <p class="hyouka" id="x_times1"></p>
+                        </div>
+                        <div class="renraku">
+                            <p class="hyouka">\(\ x\ =\ (\)</p>
+                            <p class="hyouka" id="onlyx_xbar_sis"></p>
+                            <p class="hyouka">\(\ \pm\ \)</p>
+                            <p class="hyouka" id="onlyx_delx_sis"></p>
+                            <p class="hyouka">\()\ \times 10\)</p>
+                            <p class="hyouka" id="x_times_at"></p>
+                        </div>
+                        <div class="renraku2">
+                            <p class="hyouka">\(\ 100\displaystyle \frac{\bar{x}}{\delta x}\ =\ \)</p>
+                            <button class="hyounai" id="onlyx_percent"></button>
+                            <p class="hyouka">\(\ \ \%\)</p>
+                        </div>
+                    </div>
+                    <div class="result" id="result_ax+b">
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ b\ =\ \)</p>
+                            <div class="rebsult nam" id="result_b">
+                                <p class="hyouka">\((\)</p>
+                                <button class="hyounai" id="ax+b_bbar"></button>
+                                <p class="hyouka">\(\ \pm\ \)</p>
+                                <button class="hyounai" id="ax+b_delb"></button>
+                                <p class="hyouka">\()\ \times 10\)</p>
+                                <p class="hyouka" id="b_times_0"></p>
+                            </div>
+                            <div class="rebsult">
+                                <p class="hyouka">\(0\)</p>
+                            </div>
+                        </div>
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ a\ =\ (\)</p>
+                            <button class="hyounai" id="ax+b_abar"></button>
+                            <p class="hyouka">\(\ \pm\ \)</p>
+                            <button class="hyounai" id="ax+b_dela"></button>
+                            <p class="hyouka">\()\ \times 10\)</p>
+                            <p class="hyouka" id="a_times_0"></p>
+                        </div>
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ \)</p>
+                            <div class="rexysult num" id="result_y">
+                                <p class="hyouka">\(y\)</p>
+                            </div>
+                            <div class="rexysult" id="result_y_log">
+                                <p class="hyouka">\(\log_{10} y\)</p>
+                            </div>
+                            <div class="rexysult" id="result_y_inverse">
+                                <p class="hyouka">\(\displaystyle \frac{1}{y}\)</p>
+                            </div>
+                            <p class="hyouka">\(\ =\ \)</p>
+                            <div class="rebsult nam">
+                                <p class="hyouka">\((\)</p>
+                                <p class="hyouka" id="ax+b_bbar_sis"></p>
+                                <p class="hyouka">\(\ \pm\ \)</p>
+                                <p class="hyouka" id="ax+b_delb_sis"></p>
+                                <p class="hyouka">\()\ \times 10\)</p>
+                                <p class="hyouka" id="b_times_1"></p>
+                            </div>
+                            <div class="rebsult">
+                                <p class="hyouka">\(0\)</p>
+                            </div>
+                        </div>
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ +\ (\)</p>
+                            <p class="hyouka" id="ax+b_abar_sis"></p>
+                            <p class="hyouka">\(\ \pm\ \)</p>
+                            <p class="hyouka" id="ax+b_dela_sis"></p>
+                            <p class="hyouka">\()\ \times 10\)</p>
+                            <p class="hyouka" id="a_times_1"></p>
+                            <p class="hyouka">\(\ \times\ \)</p>
+                            <div class="rexysult num" id="result_x">
+                                <p class="hyouka">\(x\)</p>
+                            </div>
+                            <div class="rexysult" id="result_x_squared">
+                                <p class="hyouka">\(x^2\)</p>
+                            </div>
+                            <div class="rexysult" id="result_x_inverse">
+                                <p class="hyouka">\(\displaystyle \frac{1}{x}\)</p>
+                            </div>
+                        </div>
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ r\ =\ \)</p>
+                            <button class="hyounai" id="ax+b_rr"></button>
+                        </div>
+                    </div>
+                    <div class="result" id="result_n2n">
+                        <div class="renraku">
+                            <p class="hyouka">\(\ y\ =\ \)</p>
+                            <button class="hyounai" id="ax+b_abar_kek"></button>
+                            <p class="hyouka">\(\ \times 10\)</p>
+                            <p class="hyouka" id="a_times_kek"></p>
+                            <p class="hyouka">\(\ \times\ \ x\)</p>
+                        </div>
+                        <div class="renraku1">
+                            <p class="hyouka">\(\ \ +\ \)</p>
+                            <button class="hyounai" id="ax+b_bbar_kek"></button>
+                            <p class="hyouka">\(\ \times 10\)</p>
+                            <p class="hyouka" id="b_times_kek"></p>
+                        </div>
+                    </div>
+                    <div class="result" id="result_n1n">
+                        <div class="renraku2">
+                            <p class="hyouka">\(\ 100\displaystyle \frac{(x\ -\ y)}{y}\ =\ \)</p>
+                            <p class="hyouka" id="keinou"></p>
+                            <p class="hyouka">\(\ \ \%\)</p>
+                        </div>
+                    </div>
+                    <div class="syousai">
+                        <p id="syousai" class="hyouka"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab" id="tt2">
+                <h2><font color="black">計算式集</font></h2><br>
+                <h3><font color="brown">・実験標準偏差</font></h3>
+                <h4>
+                    \begin{eqnarray}
+                    \ x\ &=&\ \bar{x}\ \pm\ \delta x\\
+                    &=&\ \dfrac{1}{n}\displaystyle \sum_{i=1}^{n}x_i\ \pm\ \sqrt{\dfrac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n(n-1)}}
+                    \end{eqnarray}
+                </h4>
+                <h3><font color="brown">・最小二乗法</font></h3>
+                <h4>
+                    \(\ y\ =\ b+ax\)
+                    \begin{eqnarray}
+                        b\ &=&\ \dfrac{\sum x_i^2 \sum y_i - \sum x_i \sum x_i y_i}{n\sum x_i^2 - (\sum x_i)^2} \\
+                          &\ &\ \pm\ \sqrt{\dfrac{\sum (y_i - b - ax_i)^2 \sum x_i^2}{(n-2)\{n\sum x_i^2 - (\sum x_i)^2\}}}\\
+                        a\ &=&\ \dfrac{n\sum x_i y_i - \sum x_i \sum y_i}{n\sum x_i^2 - (\sum x_i)^2} \\
+                          &\ &\ \pm\ \sqrt{\dfrac{\sum (y_i - b - ax_i)^2 n}{(n-2)\{n\sum x_i^2 - (\sum x_i)^2\}}}
+                    \end{eqnarray}
+                    \(\ y\ =\ ax\)
+                    \begin{eqnarray}
+                        a\ &=&\ \dfrac{\sum x_i y_i}{\sum x_i^2} \\
+                          &\ &\ \pm\ \sqrt{\dfrac{\sum (y_i - ax_i)^2}{(n-1)\sum x_i^2}}
+                    \end{eqnarray}
+                    \(\ y\ =\ be^{ax}\)
+                    \begin{eqnarray}
+                        \ log_{10}y\ &=&\ log_{10}b\ +\ alog10\ x
+                    \end{eqnarray}
+                    相関係数
+                    \begin{eqnarray}
+                        r=\dfrac{n\sum xy\ -\ \sum x\sum y}{\sqrt{n\sum x^2-(\sum x)^2}\sqrt{n\sum y^2-(\sum y)^2}}
+                    \end{eqnarray}
+                </h4>
+                <h3><font color="brown">・最小二乗法の別表記</font></h3>
+                <h4>
+                    \(\ \big\lbrace\because \ \langle x \rangle\ =\ \dfrac{1}{n}\sum x\big\rbrace\)
+                    \begin{eqnarray}
+                        a\ &=&\ \langle y \rangle \ -\ \dfrac{\langle xy \rangle\ -\ \langle x \rangle\langle y \rangle}{\langle x^2 \rangle\ -\ \langle x \rangle^2}\langle x \rangle\\
+                        b\ &=&\ \dfrac{\langle xy \rangle\ -\ \langle x \rangle\langle y \rangle}{\langle x^2 \rangle\ -\ \langle x \rangle^2}
+                    \end{eqnarray}
+                    相関係数
+                    \begin{eqnarray}
+                        r\ =\ \dfrac{\langle xy \rangle\ -\ \langle x \rangle\langle y \rangle}{\sqrt{\langle x^2 \rangle\ -\ \langle x \rangle^2}\sqrt{\langle y^2 \rangle\ -\ \langle y \rangle^2}}
+                    \end{eqnarray}
+                </h4>
+            </div>
+            <div class="tab" id="tt3">
+                <h2><font color="black">使い方</font></h2><br>
+                <h3><font color="brown">・データ数1</font></h3>
+                <h4>
+                    データ数が1で、x,yの両方に値が入力されるとき、xを測定値、yを真値として相対誤差(%)を求めます。<br>
+                    このとき、回帰直線の式で指定したx,yの式は反映されません。
+                </h4>
+                <h3><font color="brown">・データ数2</font></h3>
+                <h4>
+                    データ数が2で、x,yの両方に値が入力されるとき、2点間の線形近似式を求めます。<br>
+                    このとき、回帰直線の式で指定したx,y,bの式は反映されません。
+                </h4>
+                <h3><font color="brown">・データがxのみ</font></h3>
+                <h4>
+                    データ数が2以上でxのデータのみが全て入力されるとき、xについての平均と実験標準偏差を求めます。<br>
+                    これを複数回測定した際の測定値の最良推定値と不確かさとしてください。<br>
+                    このとき、回帰直線の式で指定したxの式は反映されません。
+                </h4>
+                <h3><font color="brown">・データを全て入力</font></h3>
+                <h4>
+                    最小二乗法により回帰直線の係数を決定します。<br>
+                    x,yの計算式を指定でき、特にlog10(y)を指定することで、指数関数も求められます。<br>
+                    原点を通る際はb=0としてください。
+                </h4>
+                <h3><font color="brown">・諸注意</font></h3>
+                <h4>
+                    ・数字のみを半角で入力してください。<br>
+                    ・データ数入力は自然数、10の乗数は整数で入力してください。<br>
+                    ・気になる数字があれば押してみてください。不確かさ以外の表記上の理由で丸めている場合は、下の枠に値が詳細に表示されます。但し精度には注意してください。<br>
+                    ・データ入力の真ん中の矢印ボタンを押すとxとyの値を入れ替えできます。<br>
+                    ・コンピュータは一度2進数にして計算するため多少の誤差が生じます。またそれに付随して表記上のエラー(右へのはみ出しなど)が発生するかもしれません。<br>
+                    
+                </h4>
+            </div>
+        </div>
+    </div>
+    <script src="physics.js"></script>
+</body>
+</html>
